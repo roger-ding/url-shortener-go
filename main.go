@@ -5,6 +5,7 @@ import (
   "net/http"
   "github.com/gin-gonic/gin"
   "github.com/roger-ding/url-shortener-go/lib"
+  "github.com/roger-ding/url-shortener-go/handler"
 )
 
 func main() {
@@ -15,13 +16,16 @@ func main() {
     })
   })
 
+  r.POST("/create-shortened-url", func(c *gin.Context) {
+    handler.CreateShortenedUrl(c)
+  })
+  
+  r.GET("/:shortenedUrl", func(c *gin.Context) {
+    handler.RedirectShortenedUrl(c)
+  })
+
+  // Redis initialization
   lib.InitializeRedis()
-
-  testKey := "test"
-  lib.StoreShortenedUrl(testKey, "hello world!")
-  fmt.Printf("Retrieved value for key abc - %s\n", lib.GetShortenedUrl(testKey))
-
-  println(lib.GenerateShortenedUrl("test"))
 
   err := r.Run()
   if err != nil {
