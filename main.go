@@ -21,6 +21,8 @@ func main() {
   lib.StoreShortenedUrl(testKey, "hello world!")
   fmt.Printf("Retrieved value for key abc - %s\n", lib.GetShortenedUrl(testKey))
 
+  println(lib.GenerateShortenedUrl("test"))
+
   err := r.Run()
   if err != nil {
     panic(fmt.Sprintf("Failed to start the web server - Error: %v", err))
