@@ -85,4 +85,4 @@ rogerding@CPU ~ % redis-cli
 ```
 4. Verify that the shortened URL redirects to the original source url
 
-That's it! Simple and straightforward :)
+# That's it! Simple and straightforward :)
